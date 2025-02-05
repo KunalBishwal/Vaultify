@@ -6,7 +6,37 @@ body {
   font-family: Arial, Helvetica, sans-serif;
 }
 
+@layer base {
+  body {
+    @apply bg-gradient-to-br from-blue-50/50 to-violet-50/50 dark:from-gray-900 dark:to-gray-800;
+    min-height: 100vh;
+  }
+  
+  .glass-card {
+    @apply backdrop-blur-lg bg-white/30 dark:bg-gray-900/30;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.15);
+  }
 
+  .glass-card-dark {
+    @apply dark:backdrop-blur-lg dark:bg-gray-900/30;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.15);
+  }
+}
+
+/* globals.css */
+@layer base {
+  body {
+    /* Light mode - Subtle reddish background */
+    @apply bg-gradient-to-br from-red-50/40 via-pink-50/20 to-orange-50/10;
+    
+    /* Dark mode - Keep existing dark background */
+    @apply dark:from-gray-900 dark:to-gray-800;
+    
+    min-height: 100vh;
+  }
+}
 
 @layer base {
   :root {
