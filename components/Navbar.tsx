@@ -3,7 +3,7 @@
 import * as React from "react"
 import { Moon, Sun } from "lucide-react"
 import { useTheme } from "next-themes"
-
+import toast from 'react-hot-toast';
 import { Button } from "@/components/ui/button"
 import { ClerkProvider, SignInButton, SignedIn, SignedOut, UserButton } from "@clerk/nextjs"
 
@@ -11,6 +11,7 @@ const Navbar = () => {
     const { setTheme, theme } = useTheme()
 
     const toggleTheme = () => {
+        // toast.success('Successfully theme changed!')
         setTheme(theme === "light" ? "dark" : "light")
     }
 
@@ -18,7 +19,7 @@ const Navbar = () => {
         <nav className="flex justify-between items-center px-8 h-16 bg-primary/90 text-primary-foreground shadow-sm border-b border-white/20 dark:border-b-gray-600/20 backdrop-blur-sm sticky top-0 z-50">
             <div className="flex items-center gap-2">
                 <span className="text-xl font-bold tracking-tight font-serif">
-                    VAULTIFY
+                   WalletWarden
                 </span>
             </div>
 
@@ -36,6 +37,7 @@ const Navbar = () => {
 
             <div className="flex items-center gap-4">
                 <Button
+
                     variant="ghost"
                     size="icon"
                     onClick={toggleTheme}

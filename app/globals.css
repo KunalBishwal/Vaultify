@@ -37,6 +37,10 @@ body {
     min-height: 100vh;
   }
 }
+/* Add this CSS to your global styles */
+.dark .text-red-500 {
+  color: white;
+}
 
 @layer base {
   :root {

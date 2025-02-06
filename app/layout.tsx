@@ -1,5 +1,6 @@
 import Navbar from "@/components/Navbar";
 import { Button } from "@/components/ui/button";
+import {Toaster} from 'react-hot-toast';
 import { ThemeProvider } from "@/components/theme-provider"
 import {
   ClerkProvider,
@@ -18,17 +19,20 @@ export default function RootLayout({
     <ClerkProvider>
       <html lang="en">
         <body>
-        <div>
-        </div>
-        <ThemeProvider
+          <div>
+          </div>
+          <ThemeProvider
             attribute="class"
             defaultTheme="system"
             enableSystem
             disableTransitionOnChange
-            >
-            <Navbar/>
-   
-          {children}
+          >
+            <Navbar />
+            <Toaster
+              position="top-center"
+              reverseOrder={false}
+            />
+            {children}
           </ThemeProvider>
         </body>
       </html>
