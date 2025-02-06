@@ -12,7 +12,7 @@ export default function Home() {
   return (
     <div className="container mx-auto py-8 ">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
-        <AddCard />
+        <AddCard/>
         <AddPassword />
       </div>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8">

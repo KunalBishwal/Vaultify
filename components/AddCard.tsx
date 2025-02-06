@@ -18,6 +18,8 @@ import {
   FormLabel,
   FormMessage,
 } from "@/components/ui/form";
+import { addCardServer } from "@/actions/actions";
+import { useUser } from "@clerk/nextjs";
 
 const formSchema = z.object({
   cardNumber: z
@@ -71,7 +73,8 @@ const formSchema = z.object({
   cvv: z.string().length(3, "CVV must be 3 digits"),
 });
 
-export function AddCard() {
+export function AddCard(){
+  const user = useUser()
   const [isSubmitted, setIsSubmitted] = useState(false);
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -93,8 +96,11 @@ export function AddCard() {
     setIsSubmitted(true);
     form.reset();
     setTimeout(() => setIsSubmitted(false), 3000);
-    toast.success('Card Added !')
-    // console.log(data)
+    if(user.user){
+      addCardServer(data.cardNumber,data.expiryDate,data.cvv,user?.user?.id)
+      toast.success('Card Added !');
+    }
+    // console.log(data);
   };
 
   return (
