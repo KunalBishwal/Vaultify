@@ -10,10 +10,11 @@ export default {
   theme: {
   	extend: {
   		colors: {
-			red: {
-				50: '#fef2f2',
-				100: '#fee2e2',
-				200: '#fecaca'},
+  			red: {
+  				'50': '#fef2f2',
+  				'100': '#fee2e2',
+  				'200': '#fecaca'
+  			},
   			background: 'hsl(var(--background))',
   			foreground: 'hsl(var(--foreground))',
   			card: {

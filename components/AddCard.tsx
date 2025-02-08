@@ -21,6 +21,7 @@ import {
 import { addCardServer } from "@/actions/actions";
 import { useUser } from "@clerk/nextjs";
 
+//NOTE: THE LUHN ALGORITHM
 const formSchema = z.object({
   cardNumber: z
     .string()
@@ -108,7 +109,7 @@ export function AddCard(){
       <CardHeader>
         <CardTitle className="flex items-center gap-2">
           <CreditCard className="w-6 h-6 text-primary" />
-          <span>Add Payment Method</span>
+          <span>Add Cards</span>
         </CardTitle>
       </CardHeader>
 

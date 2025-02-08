@@ -1,18 +1,37 @@
-// YourPasswords.tsx
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table"
-import { Globe, User, KeyRound, Eye, Pencil, Trash2 } from "lucide-react"
-import { Button } from "@/components/ui/button"
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from "@/components/ui/table";
+import { Globe, User, KeyRound, Eye, Pencil, Trash2 } from "lucide-react";
+import { Button } from "@/components/ui/button";
 
-const passwords = [
-  { id: 1, website: "example.com", username: "johndoe" },
-  { id: 2, website: "anothersite.com", username: "janesmith" },
-]
+// Define the data type for each credential.
+interface PasswordData {
+  id: number;
+  website: string;
+  username: string;
+}
 
-export function YourPasswords() {
+// Define the props interface. The prop "passwords" is optional.
+interface YourPasswordsProps {
+  passwords?: PasswordData[];
+}
+
+export function YourPasswords({ passwords }: YourPasswordsProps) {
+  // If no passwords prop is passed, use default credentials.
+  const data: PasswordData[] =
+    passwords || [
+      { id: 1, website: "example.com", username: "johndoe" },
+      { id: 2, website: "anothersite.com", username: "janesmith" },
+    ];
+
   return (
-    // YourPasswords.tsx and YourCards.tsx
-<Card className="w-full max-w-2xl shadow-lg hover:shadow-xl transition-shadow backdrop-blur-lg bg-white/30 dark:bg-gray-900/30 border border-white/20 dark:border-gray-600/20 glass-card dark:glass-card-dark">
+    <Card className="w-full max-w-2xl shadow-lg hover:shadow-xl transition-shadow backdrop-blur-lg bg-white/30 dark:bg-gray-900/30 border border-white/20 dark:border-gray-600/20 glass-card dark:glass-card-dark">
       <CardHeader>
         <CardTitle className="flex items-center gap-2">
           <KeyRound className="w-6 h-6 text-primary" />
@@ -21,7 +40,7 @@ export function YourPasswords() {
       </CardHeader>
       <CardContent>
         <Table>
-        <TableHeader>
+          <TableHeader>
             <TableRow className="hover:bg-transparent">
               <TableHead className="w-[40%]">Website</TableHead>
               <TableHead className="w-[40%]">Username</TableHead>
@@ -29,18 +48,18 @@ export function YourPasswords() {
             </TableRow>
           </TableHeader>
           <TableBody>
-            {passwords.map((password) => (
-              <TableRow key={password.id} className="group hover:bg-muted/50">
+            {data.map((credential) => (
+              <TableRow key={credential.id} className="group hover:bg-muted/50">
                 <TableCell>
                   <div className="flex items-center gap-2">
                     <Globe className="w-4 h-4 text-muted-foreground" />
-                    <span className="font-medium">{password.website}</span>
+                    <span className="font-medium">{credential.website}</span>
                   </div>
                 </TableCell>
                 <TableCell>
                   <div className="flex items-center gap-2">
                     <User className="w-4 h-4 text-muted-foreground" />
-                    <span>{password.username}</span>
+                    <span>{credential.username}</span>
                   </div>
                 </TableCell>
                 <TableCell className="text-right">
@@ -62,5 +81,5 @@ export function YourPasswords() {
         </Table>
       </CardContent>
     </Card>
-  )
+  );
 }
